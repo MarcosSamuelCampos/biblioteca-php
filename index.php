@@ -1,7 +1,6 @@
 <?php
-require_once 'vendor/autoload.php';
-use Marcos\Biblioteca\Teste;
-echo "hello world";
+require_once('vendor/autoload.php');
 
-$teste = new Teste();
+
+
 ?>
