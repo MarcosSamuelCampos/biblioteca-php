@@ -13,7 +13,8 @@ class Livro{
         $this->autor = $autor;
         $this->titulo = $titulo;
     }
-    public function estaDisponivel(){
+    public function estaDisponivel():bool
+    {
         return $this->disponivel;
     }
     public function marcarDisponivel(){
@@ -21,5 +22,12 @@ class Livro{
     }
       public function marcarEmprestimo(){
         $this->disponivel = false;
+    }
+
+    public function getTitulo(){
+        return $this->titulo;
+    }
+    public function getAutor(){
+        return $this->autor;
     }
 }
