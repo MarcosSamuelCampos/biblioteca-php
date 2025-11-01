@@ -13,4 +13,13 @@ class Livro{
         $this->autor = $autor;
         $this->titulo = $titulo;
     }
+    public function estaDisponivel(){
+        return $this->disponivel;
+    }
+    public function marcarDisponivel(){
+        $this->disponivel = true;
+    }
+      public function marcarEmprestimo(){
+        $this->disponivel = false;
+    }
 }
