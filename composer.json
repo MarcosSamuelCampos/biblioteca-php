@@ -1,0 +1,15 @@
+{
+    "name": "marcos/biblioteca",
+    "description": "biblioteca oop",
+    "autoload": {
+        "psr-4": {
+            "Marcos\\Biblioteca\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marcos Samuel"
+        }
+    ],
+    "require": {}
+}
