@@ -1,15 +1,22 @@
 <?php
 require_once('vendor/autoload.php');
 
+use Marcos\Biblioteca\Estante;
 use Marcos\Biblioteca\Livro;
 
 echo 'sistama de biblioteca inciciado <br>';
 
-$livro = new Livro("samuel", "teste1");
+$livro1 = new Livro("samuel", "teste1");
+$livro2 = new Livro("samuel2", "teste12");
 echo '<pre>';
 
-echo 'Livro: '. $livro->getTitulo() . '<br>';
-echo 'Autor: '. $livro->getAutor() . '<br>';
-echo 'Disponibilidade: '. ($livro->estaDisponivel() ? 'sim' : 'nao') . '<br>';
+$estante = new Estante();
 
+$estante->adicionarLivro($livro1);
+$estante->adicionarLivro($livro2);
+echo '<pre>';
+print_r($estante);
+echo '<hr>';
+$estante->removerLivro($livro1);
+print_r($estante);
 ?>
