@@ -3,20 +3,23 @@
 namespace Marcos\Biblioteca;
 
 class Livro{
-    private string $autor;
-    private string $titulo;
+
+    //propriedades privadas;
     private bool $disponivel = false;
 
 
-    public function __construct(string $autor,string $titulo)
+    public function __construct(private string $autor,private string $titulo)
     {
         $this->autor = $autor;
         $this->titulo = $titulo;
     }
+   
     public function estaDisponivel():bool
-    {
+    { //método de negócio
         return $this->disponivel;
     }
+
+    //métodos de ação
     public function marcarDisponivel(){
         $this->disponivel = true;
     }
@@ -24,6 +27,7 @@ class Livro{
         $this->disponivel = false;
     }
 
+    //métodos getters
     public function getTitulo(){
         return $this->titulo;
     }
