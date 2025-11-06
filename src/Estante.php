@@ -3,7 +3,6 @@
 namespace Marcos\Biblioteca;
 
 class Estante{
-
     private array $livros = [];
 
     public function adicionarLivro(Livro $livro):void
@@ -14,13 +13,12 @@ class Estante{
      {
         $this->livros = array_filter(
             //função anônima;
-            $this->livros, function($livroAtual) use ($livro){
-
+            $this->livros, function($livroAtual) use ($livro)
+            {
                 echo 'livro atual: ' . $livroAtual->getTitulo();
                 if ($livroAtual === $livro) {
                     //Se for o mesmo livro, imprime a mensagem “livro removido”
                     echo '- livro removido';
-                   
                 }
                  echo '<br>';
                 return $livroAtual !== $livro;
@@ -28,24 +26,28 @@ class Estante{
         );
      }
      //método que lista todos os livros relacionados aquele titulo
-     public function buscarLivroPorTitulo(string $titulo):array{ 
-          $livrosPorTitulos = [];
-        foreach($this->livros as $livro){
-            //funcao que verifica se tem livro com o titulo incompleto;
-            if (str_contains(strtolower($livro->getTitulo()),strtolower($titulo))) {
-                 $livrosPorTitulos[] = $livro;
+     public function buscarLivroPorTitulo(string $titulo):array
+     { 
+        $livrosPorTitulos = [];
+        foreach($this->livros as $livro)
+        {
+        //funcao que verifica se tem livro com o titulo incompleto;
+            if (str_contains(strtolower($livro->getTitulo()),strtolower($titulo)))
+            {
+                $livrosPorTitulos[] = $livro;
             }
         }
         return $livrosPorTitulos;
      }
-     public function listarLivrosDisponiveis():array{
+     public function listarLivrosDisponiveis():array
+     {
         //compara o livro atual com array livro e retorna se está disponivel ou não;
-        return array_filter($this->livros, function($livroAtual){
+        return array_filter($this->livros, function($livroAtual)
+        {
             return $livroAtual->estaDisponivel();
         });
      }
 }
-
 ?>
 
 
