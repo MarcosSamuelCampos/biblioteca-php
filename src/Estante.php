@@ -39,8 +39,10 @@ class Estante{
         return $livrosPorTitulos;
      }
      public function listarLivrosDisponiveis():array{
-     //TODO;
-        return [];
+        //compara o livro atual com array livro e retorna se está disponivel ou não;
+        return array_filter($this->livros, function($livroAtual){
+            return $livroAtual->estaDisponivel();
+        });
      }
 }
 
