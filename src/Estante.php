@@ -27,6 +27,21 @@ class Estante{
             }
         );
      }
+     //método que lista todos os livros relacionados aquele titulo
+     public function buscarLivroPorTitulo(string $titulo):array{ 
+          $livrosPorTitulos = [];
+        foreach($this->livros as $livro){
+            //funcao que verifica se tem livro com o titulo incompleto;
+            if (str_contains(strtolower($livro->getTitulo()),strtolower($titulo))) {
+                 $livrosPorTitulos[] = $livro;
+            }
+        }
+        return $livrosPorTitulos;
+     }
+     public function listarLivrosDisponiveis():array{
+     //TODO;
+        return [];
+     }
 }
 
 ?>
