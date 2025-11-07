@@ -10,6 +10,7 @@ echo 'sistama de biblioteca inciciado <br>';
 $livro1 = new Livro("samuel", "teste1");
 $livro2 = new Livro("samuel2", "teste12");
 $livro1->marcarDisponivel();
+$livro2->marcarDisponivel();
 echo '<pre>';
 
 $estante = new Estante();
@@ -21,6 +22,12 @@ echo '<hr>';
 
 $LivroEncontrado = $estante->buscarLivroPorTitulo("teste");
 var_dump($estante->listarLivrosDisponiveis());
+echo '<hr>';
+$professor = new Usuario("prof samucael","aluno");
+$professor->adicionarLivroEmprestado($livro1);
+//$professor->adicionarLivroEmprestado($livro2);
 
-$professor = new Usuario("prof samucael","professor");
+echo '<pre>';
+
+var_dump($professor->podePegarEmprestado());
 ?>
