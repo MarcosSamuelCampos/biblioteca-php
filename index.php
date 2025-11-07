@@ -3,6 +3,7 @@ require_once('vendor/autoload.php');
 
 use Marcos\Biblioteca\Estante;
 use Marcos\Biblioteca\Livro;
+use Marcos\Biblioteca\Usuario;
 
 echo 'sistama de biblioteca inciciado <br>';
 
@@ -20,4 +21,6 @@ echo '<hr>';
 
 $LivroEncontrado = $estante->buscarLivroPorTitulo("teste");
 var_dump($estante->listarLivrosDisponiveis());
+
+$professor = new Usuario("prof samucael","professor");
 ?>
