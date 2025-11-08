@@ -2,13 +2,12 @@
 
 namespace Marcos\Biblioteca;
 
-class Usuario{
+abstract class  Usuario{
 
-     private array $livrosEmprestados = [];  
+     protected array $livrosEmprestados = [];  
 
-      public function __construct(private string $nome, private string $tipo = "aluno") {
+      public function __construct(protected string $nome) {
         $this->nome = $nome;
-        $this->tipo = $tipo;
      }
      public function adicionarLivroEmprestado(Livro $livro) : void 
      {
@@ -22,15 +21,6 @@ class Usuario{
      public function listarLivrosEmprestados():array{
       return $this->livrosEmprestados;
      }
-     public function podePegarEmprestado():bool
-     {
-      if($this->tipo == 'aluno' && count($this->livrosEmprestados) < 1){
-         return true;
-      }
-      if($this->tipo == 'professor' && count($this->livrosEmprestados) < 3){
-         return true; 
-      }
-      return false;
-     }
+     abstract public function podePegarEmprestado():bool;
 }
 ?>
