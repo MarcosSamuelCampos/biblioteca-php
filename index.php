@@ -3,7 +3,7 @@ require_once('vendor/autoload.php');
 
 use Marcos\Biblioteca\Estante;
 use Marcos\Biblioteca\Livro;
-use Marcos\Biblioteca\Usuario;
+use Marcos\Biblioteca\Aluno;
 
 echo 'sistama de biblioteca inciciado <br>';
 
@@ -23,11 +23,12 @@ echo '<hr>';
 $LivroEncontrado = $estante->buscarLivroPorTitulo("teste");
 var_dump($estante->listarLivrosDisponiveis());
 echo '<hr>';
-$professor = new Usuario("prof samucael","aluno");
-$professor->adicionarLivroEmprestado($livro1);
-//$professor->adicionarLivroEmprestado($livro2);
+$aluno = new Aluno("samuel");
+$aluno->adicionarLivroEmprestado($livro1);
+$aluno->adicionarLivroEmprestado($livro2);
 
 echo '<pre>';
 
-var_dump($professor->podePegarEmprestado());
+var_dump($aluno->listarLivrosEmprestados());
+
 ?>
