@@ -4,6 +4,7 @@ require_once('vendor/autoload.php');
 use Marcos\Biblioteca\Estante;
 use Marcos\Biblioteca\Livro;
 use Marcos\Biblioteca\Aluno;
+use Marcos\Biblioteca\Professor;
 
 echo 'sistama de biblioteca inciciado <br>';
 
@@ -18,17 +19,22 @@ $estante = new Estante();
 $estante->adicionarLivro($livro1);
 $estante->adicionarLivro($livro2);
 
-echo '<hr>';
+// echo '<hr>';
 
-$LivroEncontrado = $estante->buscarLivroPorTitulo("teste");
-var_dump($estante->listarLivrosDisponiveis());
+// $LivroEncontrado = $estante->buscarLivroPorTitulo("teste");
+// var_dump($estante->listarLivrosDisponiveis());
 echo '<hr>';
-$aluno = new Aluno("samuel");
-$aluno->adicionarLivroEmprestado($livro1);
-$aluno->adicionarLivroEmprestado($livro2);
-
+echo 'ALUNO TESTE';
+ $aluno = new Aluno("samuel");
+// $aluno->adicionarLivroEmprestado($livro1);
+ //$aluno->adicionarLivroEmprestado($livro2);
+ var_dump($aluno->podePegarEmprestado());
+echo '<br> PROFESSOR TESTE';
 echo '<pre>';
 
-var_dump($aluno->listarLivrosEmprestados());
+$professor = new Professor("samuel");
+$professor->adicionarLivroEmprestado($livro1);
+$professor->adicionarLivroEmprestado($livro2);
 
+var_dump($professor->podePegarEmprestado());
 ?>

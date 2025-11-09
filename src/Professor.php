@@ -3,13 +3,12 @@
 namespace Marcos\Biblioteca;
 
 class Professor extends Usuario{
-    private int $maximoLivroEmprestado = 3;
+    private const MAX_LIVROS_EMPRESTADOS = 3;
 
-    public  function podePegarEmprestado():bool{
-        if(count($this->livrosEmprestados) < $this->maximoLivroEmprestado){
-            return true;
-        }
-        return false;
+    public  function podePegarEmprestado():bool
+    {
+       return count($this->livrosEmprestados) < self::MAX_LIVROS_EMPRESTADOS;
+      
     }
 }
 ?>
