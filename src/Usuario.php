@@ -11,7 +11,13 @@ abstract class  Usuario{
      }
      public function adicionarLivroEmprestado(Livro $livro) : void 
      {
-         $this->livrosEmprestados[] = $livro;
+        if ($this->podePegarEmprestado()) {
+                $this->livrosEmprestados[] = $livro;
+        }else{
+            throw new \Exception("O usuário não pode pegar livros emprestados");
+            
+        }
+        
      }
      public function removerLivroEmprestado(Livro $livro): void{
         $this->livrosEmprestados = array_filter(
