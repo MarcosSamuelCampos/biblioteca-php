@@ -34,10 +34,16 @@ echo "<hr>";
 $aluno = new Aluno("samucael");
 $aluno1 = new Aluno("campos");
 
-$bibliotecario = new Bibliotecario();
+try{
+    if(Bibliotecario::emprestarLivro($aluno,$livro1,$estante)){
+        echo "Livro: {$livro1->getTitulo()} emprestado para: {$aluno->getNome()} <br>";
+    if(Bibliotecario::devolverLivro($aluno,$livro1,$estante)){
+        echo "Livro: {$livro2->getTitulo()} devolvido por: {$aluno->getNome()} <br>";
+    }
+ }
+}catch(\Exception $error){
+    echo "Erro: ". $error->getMessage() . "<br>";
+}
 
-
-$bibliotecario->emprestarLivro($aluno,$livro1,$estante);
-$bibliotecario->devolverLivro($aluno,$livro1,$estante);
-$bibliotecario->emprestarLivro($aluno1,$livro1,$estante);
+Bibliotecario::emprestarLivro($aluno1,$livro1,$estante);
 ?>
