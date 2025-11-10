@@ -3,39 +3,37 @@
 namespace Marcos\Biblioteca;
 
 class Bibliotecario{
-     public function emprestarLivro(Usuario $usuario, Livro $livro, Estante $estante):bool{
+     public static function emprestarLivro(Usuario $usuario, Livro $livro, Estante $estante):bool{
         if(!$livro->estaDisponivel()){
-            echo " <br>o livro não está disponivel! <br> ";
+            throw new \Exception("O livro não está disponivel!");
             return false;
         }
         if(!$usuario->podePegarEmprestado()){
-            echo " <br>o usuario não pode pegar livros emprestados!  <br>";
+            throw new \Exception("O usuario não pode pegar livros emprestados! ");
             return false;
         }
         if(!$estante->verificarLivro($livro)){
-              echo " <br>o livro não está na estante! <br> ";
+             throw new \Exception( "O livro não está na estante! ");
             return false;
         }
 
         $livro->marcarEmprestimo();
         $usuario->adicionarLivroEmprestado($livro);
         $estante->removerLivro($livro);
-
-        echo "Livro emprestado com exito!  <br> <hr>";
         return true;
-     }
 
-     public function devolverLivro(Usuario $usuario, Livro $livro, Estante $estante): bool{
+     }
+     public static function devolverLivro(Usuario $usuario, Livro $livro, Estante $estante): bool{
         if($livro->estaDisponivel()){
-            echo '<br> O livro não está emprestado. <br>';
+            throw new \Exception(" O livro não está emprestado! ");
             return false;
         }
         if($estante->verificarLivro($livro)){
-            echo '<br> O livro já está na estante! <br>';
+          throw new \Exception("O livro já está na estante! ");
             return false;
         }
         if(!in_array($livro, $usuario->listarLivrosEmprestados() )){
-            echo 'não está com o usuario!';
+           throw new \Exception('O livro não está com o usuario!');
             return false;
         }
          
@@ -43,7 +41,6 @@ class Bibliotecario{
 
      $estante->adicionarLivro($livro);    
      $livro->marcarDisponivel();
-     echo 'Livro devolvido com sucesso! <br>';
     return true;
 
      }
