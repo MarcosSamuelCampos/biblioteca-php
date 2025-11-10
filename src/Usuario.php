@@ -25,8 +25,13 @@ abstract class  Usuario{
         );
      }
      public function listarLivrosEmprestados():array{
-      return $this->livrosEmprestados;
+         return $this->livrosEmprestados;
      }
      abstract public function podePegarEmprestado():bool;
+      public function getNome():string{
+         return $this->nome;
+}
+
+
 }
 ?>
