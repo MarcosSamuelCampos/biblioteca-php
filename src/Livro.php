@@ -24,7 +24,7 @@ class Livro{
         $this->disponivel = true;
     }
       public function marcarEmprestimo(){
-        $this->disponivel = true;
+        $this->disponivel = false;
     }
 
     //métodos getters
