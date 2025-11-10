@@ -38,7 +38,7 @@ try{
     if(Bibliotecario::emprestarLivro($aluno,$livro1,$estante)){
         echo "Livro: {$livro1->getTitulo()} emprestado para: {$aluno->getNome()} <br>";
     if(Bibliotecario::devolverLivro($aluno,$livro1,$estante)){
-        echo "Livro: {$livro2->getTitulo()} devolvido por: {$aluno->getNome()} <br>";
+        echo "Livro: {$livro1->getTitulo()} devolvido por: {$aluno->getNome()} <br>";
     }
  }
 }catch(\Exception $error){
