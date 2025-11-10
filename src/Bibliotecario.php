@@ -13,11 +13,11 @@ class Bibliotecario{
             return false;
         }
         if(!$estante->buscarLivroPorTitulo($livro->getTitulo())){
-              echo " <br>o livro não está estante! <br> ";
+              echo " <br>o livro não está na estante! <br> ";
             return false;
         }
 
-        $livro->marcarDisponivel();
+        $livro->marcarEmprestimo();
         $usuario->adicionarLivroEmprestado($livro);
         $estante->removerLivro($livro);
 
@@ -27,7 +27,22 @@ class Bibliotecario{
      
      
 
-     public function devolverLivro(){
+     public function devolverLivro(Usuario $usuario, Livro $livro, Estante $estante): bool{
+        if($livro->estaDisponivel()){
+            echo '<br> O livro não está emprestado. <br>';
+            return false;
+        }
+        if($estante->buscarLivroPorTitulo($livro->getTitulo())){
+            echo '<br> O livro já está na estante! <br>';
+            return false;
+        }
+         
+     $usuario->removerLivroEmprestado($livro);
+
+     $estante->adicionarLivro($livro);    
+     $livro->marcarDisponivel();
+     echo 'Livro devolvido com sucesso! <br>';
+    return true;
 
      }
 }
