@@ -17,7 +17,7 @@ class Estante{
             {
                 echo 'livro atual: ' . $livroAtual->getTitulo();
                 if ($livroAtual === $livro) {
-                    //Se for o mesmo livro, imprime a mensagem “livro removido”
+                    //Se for o mesmo livro, imprime a mensagem “$livro - livro removido”
                     echo '- livro removido';
                 }
                  echo '<br>';
@@ -25,6 +25,11 @@ class Estante{
             }
         );
      }
+     public function verificarLivro(Livro $livro): bool{
+        return in_array($livro,$this->livros);
+     }
+
+
      //método que lista todos os livros relacionados aquele titulo
      public function buscarLivroPorTitulo(string $titulo):array
      { 
@@ -49,7 +54,3 @@ class Estante{
      }
 }
 ?>
-
-
-
-
