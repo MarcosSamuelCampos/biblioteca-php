@@ -1,56 +1,43 @@
 <?php
 require_once('vendor/autoload.php');
 
-//importaão das classes
+//importação das classes
 use Marcos\Biblioteca\Estante;
 use Marcos\Biblioteca\Livro;
 use Marcos\Biblioteca\Aluno;
 use Marcos\Biblioteca\Professor;
+use Marcos\Biblioteca\Visitante;
+use Marcos\Biblioteca\Bibliotecario;
 
 echo 'sistama de biblioteca inciciado <br>';
 
-//testando a classr livro;
-$livro1 = new Livro("samuel", "teste1");
-$livro2 = new Livro("samuel2", "teste12");
+//criando objetos da classe (livro);
+$livro1 = new Livro("samuel", "PHP 8");
+$livro2 = new Livro("marcos", "javascript");
+$livro3 = new Livro("samuca", "java");
 $livro1->marcarDisponivel();
 $livro2->marcarDisponivel();
-echo '<pre>';
 
+//add livros no objeto (estante);
 $estante = new Estante();
-
-//add livros na classe estante;
 $estante->adicionarLivro($livro1);
 $estante->adicionarLivro($livro2);
+$estante->adicionarLivro($livro3);
 
-echo '<hr>';
-echo 'ALUNO TESTE <br>';
-echo '<pre>';
-//testa a classe aluno
- $aluno = new Aluno("samuel");
- $aluno->adicionarLivroEmprestado($livro1);
-if($aluno->podePegarEmprestado()){
-    echo 'O aluno pode pegar mais livros emprestados <br>';
-}else
-{
-    echo 'O aluno não pode pegar livros emprestados <br>';
-}
-var_dump($aluno->listarLivrosEmprestados());
- echo '<br>';
-echo '<hr>';
-echo '<br>';
-echo 'PROFESSOR TESTE';
-//testa a classe ptofessor;
-echo '<pre>';
+$titulo = "java";
+$livroBuscado = $estante->buscarLivroPorTitulo($titulo);
 
-$professor = new Professor("samuel");
-$professor->adicionarLivroEmprestado($livro1);
-$professor->adicionarLivroEmprestado($livro2);
-$professor->adicionarLivroEmprestado($livro2);
-if($professor->podePegarEmprestado()){
-    echo 'O professor pode pegar livros emprestados <br>';
-}else
-{
-    echo 'O professor não pode pegar livros emprestados <br>';
-}
-var_dump($professor->listarLivrosEmprestados());
+echo '<pre>';
+echo "Livros buscados com a palavra: ". $titulo . "<br>";
+print_r($livroBuscado);
+echo "<hr>";
+$aluno = new Aluno("samucael");
+$aluno1 = new Aluno("campos");
+
+$bibliotecario = new Bibliotecario();
+
+
+$bibliotecario->emprestarLivro($aluno,$livro1,$estante);
+$bibliotecario->devolverLivro($aluno,$livro1,$estante);
+$bibliotecario->emprestarLivro($aluno1,$livro1,$estante);
 ?>
